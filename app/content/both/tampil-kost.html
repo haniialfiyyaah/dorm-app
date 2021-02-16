@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+<style>
+	body{
+		background-image: url(assets/img/1.jpg);
+	}	
+	#jumbroton #aa{
+		background-color: antiquewhite;
+	}
+	
+	p{
+		color: black;
+	}
+	
+</style>
+<body>
+	<div class="container-fluid" style="opacity: 0.7">
+		<div class="row" style="margin-top: -20px">
+			<div class="jumbotron" align="center">				
+		  		<h1>Cari Kamarmu !</h1>
+		  		<p style="color: black"> Berikut Adalah Daftar Kosan Yang Ada di KosanDimana.co.id</p>
+		  		<p></p>
+				<nav class="navbar navbar-expand-lg navbar-darrk bg-light" align="left">
+					<form class="form-inline m-auto" method="post" action="">
+						<input class="form-control" type="text" placeholder="Search" aria-label="Search" name="query" id="query">
+					</form>
+					<!-- Collapsible content -->
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-md-12">
+				<!-- breadcrumb -->
+				<!-- penggunaan dari alert bootstrap -->
+				<!-- berikut ini adalah panel -->
+				<!-- penggunaan dari thumbnails bootstrap -->
+				<?php 
+if ((isset($_POST['query']))){
+	$q = $_POST['query'];
+} else{
+$q="";
+}
+					require("content/php/koneksi.php");
+					$link =  koneksi_db();
+					
+
+					if( $q != ''){
+						$sql = "SELECT * FROM `_datakosan` WHERE `ID_Kosan` like '%$q%' OR Provinsi like '%$q%' OR Kota like '%$q%' OR Judul like '%$q%' OR Harga like '%$q%' OR Deskripsi like '%$q%' OR Jenis_Kost like '%$q%' OR Alamat_Lengkap like '%$q%'";
+						$select = mysqli_query($link,$sql);
+					}else{
+						$sql = "SELECT * FROM _datakosan";
+						$select = mysqli_query($link,$sql);
+					}
+
+					$ketemu = mysqli_num_rows($select);
+					
+					if ($ketemu>0) {
+						while ($data = mysqli_fetch_array($select)) {
+							echo "<div class='col-sm-6 col-md-4'>";
+							echo "	<div class='thumbnail'>";
+							
+							$id_kosan = $data['ID_KOSAN'];
+							echo "		<img src='' alt='' class='img-responsive'>";
+							echo "		<div class='caption'>";
+							echo "		<input type='hidden' name='id_kosan' value='$data[ID_KOSAN]'>";
+							echo "<div class='card'> <div class='card-body'>";
+							echo "		<h2>$data[Judul]</h2>";
+echo "</div></div>";
+							echo "		<p>$data[Alamat_Lengkap]</p>";
+							echo "		<p><b><big>Rp. $data[Harga] /bln</big></b></p>";
+							echo "		<p> <a href='?page=detail-kost&id=$id_kosan' class='btn btn-danger' role='button'>Lihat</a></p>";
+
+							echo "		</div></div></div>";
+						}
+					}else{
+					echo "<h2 align='center'>";
+					echo "Maaf Data Yang Anda Cari  Tidak Ada!";
+					echo "</h2>";
+
+				}
+				?>
+				
+			</div>
+		</div></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+	<script src="assets/sign-design/js/scripts-register.js"></script>
+</head>
+
+<body>
+	
+	<div class="top-content register">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	
+                        	<form role="form" action="?page=proses_register" method="post" class="registration-form">
+                        		
+                        		<fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>Daftar</h3>
+		                            		<p>Isi data berikut dengan benar:</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-user"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+										<div class="form-group">
+				                        	<label class="sr-only" for="form_email">Email</label>
+				                        	<input type="email" name="form_email" placeholder="Email..." class="form_email form-control" id="form_email">
+				                        </div>
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-first-name">First name</label>
+				                        	<input type="text" name="form-first-name" placeholder="Nama..." class="form-first-name form-control" id="form-first-name">
+				                        </div>
+				                        <div class="form-group">
+				                    		<label class="sr-only" for="form-password">Password</label>
+				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+				                        </div>
+				                        
+										<div class="form-group">
+				                        	<label class="sr-only" for="phone">Phone</label>
+				                        	<input type="text" name="phone" placeholder="No HP..." 
+				                        				class="phone form-control" id="phone" onKeyPress="return hanyaAngka(event)">
+				                        </div>
+										<center>
+				                        <button type="submit" class="btn">Daftar</button>
+											</center>
+				                    </div>
+			                    </fieldset>
+		                    
+		                    </form>
+		                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+	
+</body>
+</html>

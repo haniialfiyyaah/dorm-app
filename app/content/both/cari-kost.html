@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+<style>
+	body{
+		background-image: url(assets/img/1.jpg);
+	}	
+	#jumbroton #aa{
+		background-color: antiquewhite;
+	}
+	
+	p{
+		color: black;
+	}
+	
+</style>
+<body>
+	<div class="container-fluid" style="opacity: 0.7">
+		<div class="row" style="margin-top: -20px">
+			<div class="jumbotron">
+		  		<h1>Cari Kamarmu !</h1>
+		  		<p style="color: black"> Berikut Adalah Daftar Kosan Yang Ada di KosanDimana.co.id</p>
+		  		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-md-12">
+				<!-- breadcrumb -->
+				<!-- penggunaan dari alert bootstrap -->
+				<!-- berikut ini adalah panel -->
+				<!-- penggunaan dari thumbnails bootstrap -->
+				<?php 
+		$id_kosan = $_POST['ID'];
+		require("content/php/koneksi.php");
+		$link =  koneksi_db();
+		$alamat = $_POST[f[address]];
+		$jenis_kost = $_POST[f[jenis].value];
+		$harga1 = $_POST[f[price][from]];
+		$harga2 = $_POST[f[price][to]];
+
+	if($alamat==null && $jenis_kost==0 && harga1==null && harga2==null){
+		$sql = "SELECT * FROM _datakosan";
+	}else{
+$sql =  "SELECT * FROM _datakosan WHERE Alamat_Lengkap='$alamat' or Provinsi ='$alamat' or Kota = '$alamat' or Jenis_Kost='$jenis_kost' or Harga beetwen $harga1 and $harga2 or Deskripsi = '$alamat'";
+}
+					
+
+					$res = mysqli_query($link, $sql);
+					$ketemu = mysqli_num_rows($res);
+					
+					if ($ketemu>0) {
+						while ($data = mysqli_fetch_array($res)) {
+							echo "<div class='col-sm-6 col-md-4'>";
+							echo "	<div class='thumbnail'>";
+							
+							$id_kosan = $data['ID_KOSAN'];
+							echo "		<img src='' alt='' class='img-responsive'>";
+							echo "		<div class='caption'>";
+							echo "		<input type='hidden' name='id_kosan' value='$data[ID_KOSAN]'>";
+							echo "<div class='card'> <div class='card-body'>";
+							echo "		<h2>$data[Judul]</h2>";
+echo "</div></div>";
+							echo "		<p>$data[Alamat_Lengkap]</p>";
+							echo "		<p><b><big>Rp. $data[Harga] /bln</big></b></p>";
+							echo "		<p> <a href='?page=detail-kost&id=$id_kosan' class='btn btn-danger' role='button'>Lihat</a></p>";
+
+							echo "		</div></div></div>";
+						}
+					}
+
+
+				?>
+				
+			</div>
+		</div></div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	
+</head>
+<!--<?php
+if( (isset($_SESSION['email'])) == ""){
+	header("Location: index.php?page=login");
+}
+
+?>-->
+
+<body>
+	<hr>
+
+	
+	s
+<div class="container">
+		<div class="row">
+		<div class="col-sm-10" ><h3></h3></div>
+  		<div class="col-sm-10" ><h1>Masukan Detail Kosan</h1></div>
+			<div class="col-sm-10" ><h3></h3></div>
+    </div>
+	<div class="stepwizard">
+		<div class="stepwizard-row setup-panel">
+			<div class="stepwizard-step">
+				<a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+				<p>Masukan Alamat Kosan</p>
+			</div>
+			<div class="stepwizard-step">
+				<a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+				<p>Informasi Umum</p>
+			</div>
+		</div>
+	</div>
+	<form role="form" method="post" action="?page=input_kosan">
+		<div class="row setup-content" id="step-1">
+			<div class="col-xs-12">
+				<div class="col-md-12">
+					<h3></h3>
+					<div class="form-group">
+						<label class="control-label">Provinsi</label>
+						<input  maxlength="100" type="text" class="form-control" placeholder="Masukan Provinsi"  name="provinsi" id="provinsi"  required/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Kota</label>
+						<input maxlength="100" type="text" class="form-control" placeholder="Masukan Kota" name="kota" id="kota" required/>
+					</div>
+					<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+				</div>
+			</div>
+		</div>
+		<div class="row setup-content" id="step-2">
+			<div class="col-xs-12">
+				<div class="col-md-12">
+					<h3></h3>
+					<div class="form-group">
+						<label class="control-label">Judul</label>
+						<input maxlength="200" type="text" required="required" class="form-control" placeholder="Masukan Judul Kosan" name="judul" id="judul">
+					</div>
+					<div class="form-group">
+						<label class="control-label">Harga (/bulan)</label>
+						<input maxlength="200" type="text" required="required" class="form-control" placeholder="Harga Kosan /bulan" name="harga" id="harga" onKeyPress="return hanyaAngka(event)"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Deskripsi</label>
+						<textarea type="text" rows="5" cols="" required="required" class="form-control" placeholder="" name="deskripsi" id="deskripsi"></textarea>
+					</div>
+					<div class="form-group">
+						<label class="control-label ">Jenis Kost</label>
+						<select id="jenis_kost" name="jenis_kost" class="form-control" required="required">
+							<option value="Kost Campur">Kost Campur</option>
+							<option value="Kost Pria">Kost Pria</option>
+							<option value="Kost Wanita">Kost Wanita</option>
+							<option value="Kost Pria/Wanita">Kost Pria/Wanita</option>
+							<option value="Kost Pasutri">Kost Pasutri</option>
+							<option value="Kost Keluarga">Kost Keluarga</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Alamat Lengkap</label>
+						<input maxlength="200" type="text" required="required" class="form-control" placeholder="Masukan Alamat Lengkap" name="alamat" id="alamat" />
+					</div>
+					
+					
+					
+					
+						
+					<button class="btn btn-success btn-lg pull-right" type="submit" name="input">Finish!</button>
+					<hr><hr>
+					
+					
+				<!--	<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button> -->
+				</div>
+			</div>
+		</div>
+		<div class="row setup-content" id="step-3">
+			<div class="col-xs-12">
+				<div class="col-md-12">
+					<h3> Step 3</h3>
+					   
+					<div class="form-group">
+						<label class="control-label">AC</label>
+						<div class="input-group col-xs-5">
+								<div class="radioBtn btn-group">
+									<a class="btn btn-primary notActive" data-toggle="happy" data-title="Y"  name="YES" id="buttonAC" role="radio">YES</a>
+									<a class="btn btn-primary active" data-toggle="happy" data-title="N"  name="NO" id="buttonAC" role="radio">NO</a>
+								</div>
+								<input type="hidden" name="happy" class="happy">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Kamar Mandi Dalam</label>
+						<div class="input-group col-xs-5">
+								<div class="radioBtn btn-group">
+									<a class="btn btn-primary  notActive" data-toggle="happy" data-title="Y" name="YES" id="buttonKM"  role="radio">YES</a>
+									<a class="btn btn-primary  active" data-toggle="happy" data-title="N" name="NO" id="buttonKM"  role="radio">NO</a>
+								</div>
+								<input type="hidden" name="happy" class="happy">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Wifi</label>
+						<div class="input-group col-xs-5">
+								<div class="radioBtn btn-group">
+									<a class="btn btn-primary  notActive" data-toggle="happy" data-title="Y" name="YES" id="buttonTV"  role="radio">YES</a>
+									<a class="btn btn-primary  active" data-toggle="happy" data-title="N" name="YES" id="buttonTV"  role="radio">NO</a>
+								</div>
+								<input type="hidden" name="happy" class="happy">
+						</div>
+					</div>
+					<div class="form-group">
+						<hr><hr>
+						<label class="control-label">FASILITAS KAMAR</label>
+						<div class="field checkbox-field" id="sf_field_fasilitas_kamar">
+							<input name="f[fasilitas_kamar][0]" value="0" type="hidden">
+							<div class="row">
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_spring_bed" name="f[fasilitas_kamar][fasilitas_kamar_spring_bed]" id="css_INPUT_17" type="checkbox">
+									<label title="Spring Bed" for="css_INPUT_17"><span></span>Spring Bed</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_kipas_angin" name="f[fasilitas_kamar][fasilitas_kamar_kipas_angin]" id="css_INPUT_18" type="checkbox">
+									<label title="Kipas Angin" for="css_INPUT_18"><span></span>Kipas Angin</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_ac" name="f[fasilitas_kamar][fasilitas_kamar_ac]" id="css_INPUT_19" type="checkbox">
+									<label title="AC" for="css_INPUT_19"><span></span>AC</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_televisi" name="f[fasilitas_kamar][fasilitas_kamar_televisi]" id="css_INPUT_20" type="checkbox">
+									<label title="Televisi" for="css_INPUT_20"><span></span>Televisi</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_tv_berlangganan" name="f[fasilitas_kamar][fasilitas_kamar_tv_berlangganan]" id="css_INPUT_21" type="checkbox">
+									<label title="TV Berlangganan" for="css_INPUT_21"><span></span>TV Berlangganan</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_internet" name="f[fasilitas_kamar][fasilitas_kamar_internet]" id="css_INPUT_22" type="checkbox">
+									<label title="Internet" for="css_INPUT_22"><span></span>Internet</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_meja" name="f[fasilitas_kamar][fasilitas_kamar_meja]" id="css_INPUT_23" type="checkbox">
+									<label title="Perabot" for="css_INPUT_23"><span></span>Perabot</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_kamar_mandi_dalam" name="f[fasilitas_kamar][fasilitas_kamar_kamar_mandi_dalam]" id="css_INPUT_24" type="checkbox">
+									<label title="Kamar mandi dalam" for="css_INPUT_24"><span></span>Kamar mandi dalam</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_wastafel" name="f[fasilitas_kamar][fasilitas_kamar_wastafel]" id="css_INPUT_25" type="checkbox">
+									<label title="Wastafel" for="css_INPUT_25"><span></span>Wastafel</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_pemanas_air" name="f[fasilitas_kamar][fasilitas_kamar_pemanas_air]" id="css_INPUT_26" type="checkbox">
+									<label title="Pemanas air" for="css_INPUT_26"><span></span>Pemanas air</label>
+								</span>
+								<span class="custom-input col-xs-12 col-sm-4">
+									<input value="fasilitas_kamar_kulkas" name="f[fasilitas_kamar][fasilitas_kamar_kulkas]" id="css_INPUT_27" type="checkbox">
+									<label title="Kulkas" for="css_INPUT_27"><span></span>Kulkas</label>
+								</span>
+							</div>
+							<div class="checkbox_bar">
+								<a href="javascript:void(0)" onclick="$(this).parent().prev().find('input[type=checkbox]').attr('checked', true)">Pilih Semua</a> / 
+								<a onclick="$(this).parent().prev().find('input[type=checkbox]').attr('checked', false)" href="javascript:void(0)">Batalkan Pilih Semua</a>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					<button class="btn btn-success btn-lg pull-right" type="submit" name="input">Finish!</button>
+					<hr><hr>
+					
+					<div class="form-group">
+						<hr><hr>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+	<hr>
+	<div class="container bootstrap snippet">
+	<div class="row">
+		<div class="col-sm-10" ><h3></h3></div>
+  		<div class="col-sm-10" ><h1>Profile</h1></div>
+    </div>
+		
+    <div class="row">
+  		<!--/col-3-->
+    	<div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Akun Saya</a></li>
+                <li><a data-toggle="tab" href="#messages">Kelola Password</a></li>
+                <li><a data-toggle="tab" href="#settings">Detail Akun</a></li>
+              </ul>
+
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                  <form class="form"  action="?page=edit_profile" method="post" id="registrationForm">
+                      
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Email</h4></label>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="<?php
+			echo $_SESSION['email'];?>" required>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit" name="ganti-email" value="email"> Simpan</button>
+                               	<!-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button> -->
+                            </div>
+                      </div>
+              	</form>
+              
+              <hr>
+              
+             </div><!--/tab-pane-->
+             <div class="tab-pane" id="messages">
+               
+               <h2></h2>
+               
+               <hr>
+                  <form class="form" action="?page=edit_profile" method="post" id="registrationForm">
+                      
+                      
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="password"><h4>Password Lama</h4></label>
+                              <input type="password" class="form-control" name="password_lama" id="password_baru" placeholder="Password Lama" title="enter your password." required>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="password2"><h4>Password Baru</h4></label>
+                              <input type="password" class="form-control" name="password_baru" id="password_baru" placeholder="Password Baru" title="enter your password2." required>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit" name="ganti-password">Ganti Password</button>
+                               	
+                            </div>
+                      </div>
+              	</form>
+               
+             </div><!--/tab-pane-->
+             <div class="tab-pane" id="settings">
+            		
+               	
+                  <hr>
+                  <form class="form" action="?page=edit_profile" method="post" id="registrationForm">
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Nama Lengkap</h4></label>
+                              <input type="text" class="form-control" name="form_name" id="form_name" placeholder="Nama Lengkap" title="Masukan Nama Anda!" value="<?php
+			echo $_SESSION['nama'];?>" required>
+                          </div>
+                      </div>
+          
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="phone"><h4>No HP</h4></label>
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder="Masukan Nomor HP" title="Masukan Nomor HP Anda" value="<?php
+			echo $_SESSION['No_HP'];?>" required onKeyPress="return hanyaAngka(event)">
+                          </div>
+                      </div>
+          
+                      
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success pull-right" type="submit" name="profile"> Simpan</button>
+                               	<!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+							   <hr><hr>
+                            </div>
+                      </div>
+					  <hr><hr>
+					  <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="phone"><h1>Hapus Akun</h1></label>
+							  <br>
+							  <label for="phone"><h3>Apakah Anda Ingin Menghapus Akun Ini? Anda akan kehilangan data untuk selamanya jika anda menghapus akun anda!</h3></label>
+							  <div class="form-group">
+						  </div>
+                          </div>
+						  <div class="col-xs-6">
+                              <label for="phone"><h1></h1></label>
+							  <br>
+							  <label for="phone"><h3></h3></label>
+							  <div class="form-group">
+							   <div class="col-xs-12">
+									
+									<button class="btn btn-lg btn-success" type="submit" name="delete"> HAPUS AKUN</button>
+
+								</div>
+						  </div>
+                          </div>
+                      </div>
+              	</form>
+              </div>
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div>
+</body>
+</html>

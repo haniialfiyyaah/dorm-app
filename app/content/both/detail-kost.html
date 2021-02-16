@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+	p{
+		color: black;
+	}
+	</style>
+	</head>
+	
+
+<body style="background-image: url(assets/img/2.jpeg)">
+	<div class="row">
+		<hr>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- breadcrumb -->
+				<!-- penggunaan dari alert bootstrap -->
+				<!-- berikut ini adalah panel -->
+				<!-- penggunaan dari thumbnails bootstrap -->
+				<div class="col-sm-6 col-md-8">
+					<div class="thumbnail" style="background-color: beige; opacity: 0.8">
+						<img src="..." alt="..." class="img-responsive">
+						<div class="caption">
+							<?php 
+							require("content/php/koneksi.php");
+							$link =  koneksi_db();
+							$sql = "SELECT * FROM _datakosan";
+							$id_kos = $_GET['id'];
+							$sql = "SELECT * FROM _datakosan WHERE ID_KOSAN='$id_kos'";
+							$res = mysqli_query($link, $sql);
+							$ketemu = mysqli_num_rows($res);
+							$data = mysqli_fetch_array($res);
+			
+$sql_number = "SELECT `F_No_HP` AS No_HP, F_Nama FROM `_datapengelola` INNER JOIN `_datakosan` ON `_datapengelola`.`F_Email`=`_datakosan`.`F_Email` WHERE `ID_KOSAN`='$id_kos'";
+$res_number = mysqli_query($link, $sql_number);
+$data_number = mysqli_fetch_array($res_number);
+$number = $data_number['No_HP'];
+$nama = $data_number['F_Nama'];
+
+							$email = $data['F_Email'];
+							$provinsi = $data['Provinsi'];
+							$kota = $data['Kota'];
+							$judul = $data['Judul'];
+							$harga = $data['Harga'];
+							$deskripsi = $data['Deskripsi'];
+							$jenis_kost = $data['Jenis_Kost'];
+							$alamat = $data['Alamat_Lengkap'];
+
+							echo "<h1>$judul</h1>";
+							echo "<h4>$alamat</h4>";
+							echo "<h3>Rp. $harga / bln</h3> <hr><hr>";
+							echo "<h3>Lokasi</h3>";
+							echo "<p>$kota , $provinsi</p> <br> ";
+							echo "<h3>Jenis Kost</h3>";
+							echo "<p>$jenis_kost</p> <br> ";
+							echo "<h3>Deskripsi</h3>";
+							echo "<p>$deskripsi</p>";
+							echo "<h3>Alamat</h3>";
+							echo "<p>$alamat</p> ";
+							echo "<h3>Hubungi</h3>";
+							echo "<p>$number</p>";
+							echo "<br>";
+							echo "</div>";
+							echo "</div>";
+							echo "</div>";
+
+
+				
+
+			echo	"<div class='col-sm-6 col-md-4'>";
+			echo		"<div class='thumbnail'  style='background-color: beige; opacity: 0.8' >";
+			echo		"	<div class='caption'> ";
+			echo		"		<p>$nama</p>";
+			echo		"		<p>Nomor HP : $number</p>";
+			echo	"		</div>";
+						
+?>
+						<form method="post" action="?page=pesan_masukphp">
+							<input type="hidden" name="kode" value="<?php echo $id_kos?>">
+							<input type="hidden" name="email_tujuan" value="<?php echo $email?>">
+						<div>
+					    	<input name="nama" type="text" class="form-control" placeholder="Nama" required>
+    					</div>
+    					<div>
+					      	<input name="email" type="email" class="form-control" placeholder="Email" required>
+				    	</div>
+				    	<div>
+							<input name="hp" type="text" class="form-control" placeholder="No. Telp" maxlength="12" required>
+						</div>
+						<div>
+							<textarea name="msg" type="textarea"  class="form-control" placeholder="Pesan" maxlength="300" required></textarea>
+						</div>
+						<br><center>
+						<button type="submit" class="btn btn-primary" name="pesan"> Kirim ke Pengelola Kost </button>
+						<br></center>
+						<br>
+							</form>
+					</div>
+
+					<div class="thumbnail" style="background-color: beige; opacity: 0.8">
+						<img src="asset/img/1.jpg" alt="..." class="img-responsive">
+						<?php
+echo "<h3> $judul</h3>";
+		echo					"<p>$alamat</p>";
+		echo					"<p><b><big>Rp. $harga/bln</big></b></p> <a href="#" class="btn btn-danger" role="button">Look!</a></p>";
+					?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+		
+<!------ Include the above in your HEAD tag ---------->
+</head>
+
+<body>
+	
+
+<div class="container">
+	<hr><hr>
+	<div class="row">
+  		<div class="col-sm-9" ><h1><strong>Kelola </strong><small>Kos</small></h1></div>
+		<form id="custom-search-form" class="form-search form-horizontal pull-right" action="" method="post">
+			<div class="input-append ">
+					<select id="pilih_kategori" name="pilih_kategori" class="form-control" required="required">
+							<option value=0>Semuanya</option>
+							<option value=1>Berdasarkan ID</option>
+							<option value=2>Berdasarkan Judul</option>
+							<option value=3>Berdasarkan Harga</option>
+						</select>
+                </div>
+                <div class="input-append ">
+					<button type="submit" name="submit" id="submit" class="btn" value="Search"></button>
+                    <input type="text" class="search" name="query" id="query" placeholder="Search">
+                </div>
+		</form>
+    </div>
+    <div class="row custyle">
+		<table class="table table-striped cus_tab">
+			<a href="?page=iklan" class="btn btn-primary btn-xs pull-right"><b>+</b> Tambah Kosan Baru</a>
+			<thead>
+				<tr>
+					<th>NO</th>
+					<th>ID Kosan</th>
+					<th>Judul</th>
+					<th>Harga</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead> 
+			<?php
+	if ((isset($_POST['query']))){
+		$q = $_POST['query'];
+		$kategori = $_POST['pilih_kategori'];
+	} else{
+		$q="";
+	}
+			require("content/php/koneksi.php");
+			$link = koneksi_db();
+			$email=$_SESSION['email'];
+			
+			$no = 0;
+			if( $q != ''){	
+
+if($kategori==0){
+	$sql = "SELECT * FROM `_datakosan` WHERE F_Email='$email' and (`ID_Kosan`like '%$q%' OR Judul like '%$q%' OR Harga like '%$q%' )";
+}else if ($kategori==1){
+	$sql = "SELECT * FROM `_datakosan` WHERE F_Email='$email' and (`ID_Kosan`like '%$q%')";
+}
+else if ($kategori==2){
+	$sql = "SELECT * FROM `_datakosan` WHERE F_Email='$email' and (Judul like '%$q%')";
+}
+else if ($kategori==3){
+	$sql = "SELECT * FROM `_datakosan` WHERE F_Email='$email' and (Harga like '%$q%' )";
+}
+
+			}else{
+				$sql = "SELECT * FROM `_datakosan` WHERE F_Email = '$email'";
+				
+			}
+$select = mysqli_query($link,$sql);
+			$ketemu = mysqli_num_rows($select);
+			if ($ketemu > 0) {
+			while ($data = mysqli_fetch_array($select)){
+			
+				$no++;
+					echo 	" <tr>";
+					echo	"<td>$no</td>";
+					echo	"<td>$data[ID_KOSAN]</td>";
+					echo	"<td>$data[Judul]</td>";
+					echo	"<td>$data[Harga]</td>";
+					echo	"<td class='text-center'>";
+					echo	"	<a href='?page=detail-kost&id=$data[ID_KOSAN]' class='btn btn-info btn-xs'> ";
+					echo	"		<span class='glyphicon '></span> Lihat";
+					echo	"	</a>";
+					echo	"	<a class='btn btn-info btn-xs' href='?page=edit-kost&id=$data[ID_KOSAN]'>";
+					echo	"		<span class='glyphicon '></span> Edit";
+					echo	"	</a> ";
+					echo	"	<a href='?page=input_kosan&id=$data[ID_KOSAN]&delete=1' name='hapus_disini' class='btn btn-danger btn-xs' name='delete'> ";
+					echo	"		<span class='glyphicon '></span> Hapus";
+					echo	"	</a>";
+
+					echo	" </td>";
+					echo	"</tr>";
+					
+			 } 
+				}else{
+					echo "<tr>";
+					echo "<td rowspan=4><center>DATA KOSONG</center></td>";
+					echo "</tr>";
+
+				}?>
+		
+    	</table>
+    </div>
+</div>
+	
+</body>
+</html>
